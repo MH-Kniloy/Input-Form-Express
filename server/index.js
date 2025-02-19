@@ -5,15 +5,17 @@ const port = 3000;
 
 app.use(cors())
 
-const info = [
-    {
-        name:"whasssssuuup"
-    }
-]
+app.use(express.json())
+
+const info = []
 
 app.get("/", (req, res) => {
   res.send(info);
 });
+
+app.post("/info", (req, res)=>{
+  info.push(req.body)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
